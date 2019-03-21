@@ -1,5 +1,5 @@
-#Tell your friends
-###Project Description
+# Tell your friends
+### Project Description
 
 Software Design Project for this semester will be a a web application named "Tell your friend".
 This will be a web application which can be used by everyone who wants to read or add a good review about a book or a movie.
