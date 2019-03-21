@@ -1,3 +1,7 @@
-Please modify this file so it contains ONLY your full name: Surname & First Name
+#Tell your friends
+###Project Description
 
-You can find the related resources at https://github.com/utcn-cs-software-design-tudorv-2019/LabInfo
+Software Design Project for this semester will be a a web application named "Tell your friend".
+This will be a web application which can be used by everyone who wants to read or add a good review about a book or a movie.
+A user can register in the system, log in the system, add a new review, view all the reviews and add other comments on exiting reviews. 
+This application is implemented in .Net using Entity Framework 6 for the back-end, and the front-end application is implemented using Angular 7 and using the Angular Material Theme. 
