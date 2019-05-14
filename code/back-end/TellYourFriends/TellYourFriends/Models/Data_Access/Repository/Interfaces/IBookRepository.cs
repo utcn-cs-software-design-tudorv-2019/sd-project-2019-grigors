@@ -7,7 +7,7 @@ using TellYourFriends.Models.Entity;
 
 namespace TellYourFriends.Models.Data_Access.Repository.Interfaces
 {
-    interface IBookRepository
+    public interface IBookRepository
     {
         IQueryable<Book> GetAllEventBooks();
         Book GetBook(int id);

@@ -69,7 +69,7 @@ namespace TellYourFriends.Models.Data_Access.Repository
         {
             try
             {
-                return _context.Users.Include("Book").Include("Movie");
+                return _context.Users.Include("Books").Include("Movies");
             }
             catch (Exception ex)
             {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TellYourFriends.Models.Data_Access.Repository.Interfaces
 {
-    interface IMovieRepository
+    public interface IMovieRepository
     {
         IQueryable<Movie> GetAllEventMovies();
         Movie GetMovie(int id);

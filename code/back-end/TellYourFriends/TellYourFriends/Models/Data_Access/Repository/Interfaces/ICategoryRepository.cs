@@ -7,7 +7,7 @@ using TellYourFriends.Models.Entity;
 
 namespace TellYourFriends.Models.Data_Access.Repository.Interfaces
 {
-    interface ICategoryRepository
+    public interface ICategoryRepository
     {
         IQueryable<Category> GetAllCategories();
         Category GetCategory(int id);

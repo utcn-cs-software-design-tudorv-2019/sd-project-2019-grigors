@@ -8,7 +8,7 @@ using TellYourFriends.Utility;
 
 namespace TellYourFriends.Models.Data_Access.Repository.Interfaces
 {
-    interface IUserRepository
+    public interface IUserRepository
     {
         User GetUser(int id);
         IQueryable<User> GetUsers();

@@ -7,7 +7,7 @@ using TellYourFriends.Models.Entity;
 
 namespace TellYourFriends.Models.Data_Access.Repository.Interfaces
 {
-    interface ICommentRepository
+    public interface ICommentRepository
     {
         IQueryable<Comment> GetAllComments();
         Comment GetComment(int id);
