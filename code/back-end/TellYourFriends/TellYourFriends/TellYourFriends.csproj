@@ -96,17 +96,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905132340528_CreateDatabase.cs" />
-    <Compile Include="Migrations\201905132340528_CreateDatabase.Designer.cs">
-      <DependentUpon>201905132340528_CreateDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\201905140830046_create database.cs" />
+    <Compile Include="Migrations\201905140830046_create database.Designer.cs">
+      <DependentUpon>201905140830046_create database.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Data_Access\AppDbContext.cs" />
+    <Compile Include="Models\Data_Access\Repository\BookRepository.cs" />
+    <Compile Include="Models\Data_Access\Repository\CategoryRepository.cs" />
+    <Compile Include="Models\Data_Access\Repository\CommentRepository.cs" />
     <Compile Include="Models\Data_Access\Repository\Interfaces\IBookRepository.cs" />
     <Compile Include="Models\Data_Access\Repository\Interfaces\ICategoryRepository.cs" />
     <Compile Include="Models\Data_Access\Repository\Interfaces\ICommentRepository.cs" />
     <Compile Include="Models\Data_Access\Repository\Interfaces\IMovieRepository.cs" />
-    <Compile Include="Models\Data_Access\Repository\Interfaces\User.cs" />
+    <Compile Include="Models\Data_Access\Repository\Interfaces\IUserRepository.cs" />
+    <Compile Include="Models\Data_Access\Repository\MovieRepository.cs" />
+    <Compile Include="Models\Data_Access\Repository\UserRepository.cs" />
     <Compile Include="Models\Entity\Book.cs" />
     <Compile Include="Models\Entity\Category.cs" />
     <Compile Include="Models\Entity\Comment.cs" />
@@ -114,6 +119,7 @@
     <Compile Include="Models\Entity\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\ChangePasswordModel.cs" />
+    <Compile Include="Utility\Encryptor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -130,8 +136,8 @@
     <Folder Include="Models\Business_Logic\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905132340528_CreateDatabase.resx">
-      <DependentUpon>201905132340528_CreateDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905140830046_create database.resx">
+      <DependentUpon>201905140830046_create database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

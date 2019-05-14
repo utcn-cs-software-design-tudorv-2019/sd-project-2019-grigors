@@ -3,7 +3,7 @@ namespace TellYourFriends.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CreateDatabase : DbMigration
+    public partial class createdatabase : DbMigration
     {
         public override void Up()
         {
@@ -28,10 +28,11 @@ namespace TellYourFriends.Migrations
                 "dbo.Categories",
                 c => new
                     {
-                        Name = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
                         Description = c.String(),
                     })
-                .PrimaryKey(t => t.Name);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Movies",
@@ -73,6 +74,7 @@ namespace TellYourFriends.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
                         Email = c.String(),
                         Password = c.String(),
                         Image = c.String(),
@@ -83,13 +85,13 @@ namespace TellYourFriends.Migrations
                 "dbo.CategoryBooks",
                 c => new
                     {
-                        Category_Name = c.Int(nullable: false),
+                        Category_Id = c.Int(nullable: false),
                         Book_Id = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => new { t.Category_Name, t.Book_Id })
-                .ForeignKey("dbo.Categories", t => t.Category_Name, cascadeDelete: true)
+                .PrimaryKey(t => new { t.Category_Id, t.Book_Id })
+                .ForeignKey("dbo.Categories", t => t.Category_Id, cascadeDelete: true)
                 .ForeignKey("dbo.Books", t => t.Book_Id, cascadeDelete: true)
-                .Index(t => t.Category_Name)
+                .Index(t => t.Category_Id)
                 .Index(t => t.Book_Id);
             
             CreateTable(
@@ -97,13 +99,13 @@ namespace TellYourFriends.Migrations
                 c => new
                     {
                         Movie_Id = c.Int(nullable: false),
-                        Category_Name = c.Int(nullable: false),
+                        Category_Id = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => new { t.Movie_Id, t.Category_Name })
+                .PrimaryKey(t => new { t.Movie_Id, t.Category_Id })
                 .ForeignKey("dbo.Movies", t => t.Movie_Id, cascadeDelete: true)
-                .ForeignKey("dbo.Categories", t => t.Category_Name, cascadeDelete: true)
+                .ForeignKey("dbo.Categories", t => t.Category_Id, cascadeDelete: true)
                 .Index(t => t.Movie_Id)
-                .Index(t => t.Category_Name);
+                .Index(t => t.Category_Id);
             
         }
         
@@ -113,14 +115,14 @@ namespace TellYourFriends.Migrations
             DropForeignKey("dbo.Books", "User_Id", "dbo.Users");
             DropForeignKey("dbo.Comments", "Book_Id", "dbo.Books");
             DropForeignKey("dbo.Comments", "Movie_Id", "dbo.Movies");
-            DropForeignKey("dbo.MovieCategories", "Category_Name", "dbo.Categories");
+            DropForeignKey("dbo.MovieCategories", "Category_Id", "dbo.Categories");
             DropForeignKey("dbo.MovieCategories", "Movie_Id", "dbo.Movies");
             DropForeignKey("dbo.CategoryBooks", "Book_Id", "dbo.Books");
-            DropForeignKey("dbo.CategoryBooks", "Category_Name", "dbo.Categories");
-            DropIndex("dbo.MovieCategories", new[] { "Category_Name" });
+            DropForeignKey("dbo.CategoryBooks", "Category_Id", "dbo.Categories");
+            DropIndex("dbo.MovieCategories", new[] { "Category_Id" });
             DropIndex("dbo.MovieCategories", new[] { "Movie_Id" });
             DropIndex("dbo.CategoryBooks", new[] { "Book_Id" });
-            DropIndex("dbo.CategoryBooks", new[] { "Category_Name" });
+            DropIndex("dbo.CategoryBooks", new[] { "Category_Id" });
             DropIndex("dbo.Comments", new[] { "Book_Id" });
             DropIndex("dbo.Comments", new[] { "Movie_Id" });
             DropIndex("dbo.Movies", new[] { "User_Id" });

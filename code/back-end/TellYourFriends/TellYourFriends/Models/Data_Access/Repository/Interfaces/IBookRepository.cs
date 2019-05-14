@@ -11,7 +11,7 @@ namespace TellYourFriends.Models.Data_Access.Repository.Interfaces
     {
         IQueryable<Book> GetAllEventBooks();
         Book GetBook(int id);
-        Book CreateBook(Book book);
+        Book AddBook(Book book);
         Book EditBook(Book book);
         bool DeleteBook(int id);
 

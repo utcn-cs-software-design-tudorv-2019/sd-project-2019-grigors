@@ -7,13 +7,13 @@ namespace TellYourFriends.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class CreateDatabase : IMigrationMetadata
+    public sealed partial class createdatabase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateDatabase));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(createdatabase));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905132340528_CreateDatabase"; }
+            get { return "201905140830046_create database"; }
         }
         
         string IMigrationMetadata.Source

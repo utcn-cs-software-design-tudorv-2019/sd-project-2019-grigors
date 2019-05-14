@@ -16,29 +16,102 @@ namespace TellYourFriends.Models.Data_Access.Repository
             _context = context;
         }
 
-        public Category CreateCategory(Category category)
+        public Category AddCategory(Category category)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _context.Categories.Add(category);
+                _context.SaveChanges();
+                return category;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
 
         public bool DeleteCategory(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var foundedCategory = _context.Categories.FirstOrDefault(x => x.Id == id);
+                if (foundedCategory == null) return false;
+
+                _context.Categories.Remove(foundedCategory);
+                _context.SaveChanges();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
         }
 
         public Category EditCategory(Category category)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var categoryToUpdate = _context.Categories.FirstOrDefault(x => x.Id == category.Id);
+                if (categoryToUpdate == null) return null;
+
+                if (category.Description != null && category.Description != "")
+                {
+                    categoryToUpdate.Description = category.Description;
+                }
+
+                if (category.Name != null && category.Name != "")
+                {
+                    categoryToUpdate.Name = category.Name;
+                }
+
+                if (category.Books != null)
+                {
+                    categoryToUpdate.Books = category.Books;
+                }
+
+                if (category.Movies != null)
+                {
+                    categoryToUpdate.Movies = category.Movies;
+                }
+
+                _context.SaveChanges();
+
+                return category;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
 
-        public IQueryable<Category> GetAllEventCategorys()
+        public IQueryable<Category> GetAllCategories()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _context.Categories;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
 
         public Category GetCategory(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _context.Categories.SingleOrDefault(u => u.Id == id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
     }
 }

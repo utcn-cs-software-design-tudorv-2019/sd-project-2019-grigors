@@ -9,9 +9,9 @@ namespace TellYourFriends.Models.Data_Access.Repository.Interfaces
 {
     interface ICategoryRepository
     {
-        IQueryable<Category> GetAllEventCategorys();
+        IQueryable<Category> GetAllCategories();
         Category GetCategory(int id);
-        Category CreateCategory(Category category);
+        Category AddCategory(Category category);
         Category EditCategory(Category category);
         bool DeleteCategory(int id);
     }

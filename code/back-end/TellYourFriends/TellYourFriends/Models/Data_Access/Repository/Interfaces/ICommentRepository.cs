@@ -9,9 +9,9 @@ namespace TellYourFriends.Models.Data_Access.Repository.Interfaces
 {
     interface ICommentRepository
     {
-        IQueryable<Comment> GetAllEventComments();
+        IQueryable<Comment> GetAllComments();
         Comment GetComment(int id);
-        Comment CreateComment(Comment comment);
+        Comment AddComment(Comment comment);
         Comment EditComment(Comment comment);
         bool DeleteComment(int id);
     }

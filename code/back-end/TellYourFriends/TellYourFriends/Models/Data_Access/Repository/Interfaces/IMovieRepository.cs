@@ -10,8 +10,8 @@ namespace TellYourFriends.Models.Data_Access.Repository.Interfaces
     {
         IQueryable<Movie> GetAllEventMovies();
         Movie GetMovie(int id);
-        Movie CreateMovie(Movie movie);
-        Movie EditBook(Movie movie);
+        Movie AddMovie(Movie movie);
+        Movie EditMovie(Movie movie);
         bool DeleteMovie(int id);
         
     }
