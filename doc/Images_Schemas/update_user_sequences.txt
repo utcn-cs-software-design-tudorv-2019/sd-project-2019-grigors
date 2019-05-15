@@ -1,0 +1,12 @@
+title Update User Account
+
+HopePageUI->UpdateAccountUI:click on user icon
+UpdateAccountUI->HTTPContext: 1. fill fields with information\n2. click in Update button
+HTTPContext->UserService: update(user)
+UserService->UserRepository: update(user)
+UserRepository->sql database: update(user)
+sql database-->UserRepository: User
+UserRepository-->UserService:User
+UserService-->HTTPContext:HttpResponse
+HTTPContext-->UpdateAccountUI:show new information
+
