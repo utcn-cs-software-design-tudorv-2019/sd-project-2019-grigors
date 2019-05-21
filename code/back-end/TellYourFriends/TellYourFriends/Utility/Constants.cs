@@ -7,7 +7,7 @@ namespace TellYourFriends.Utility
 {
     public class Constants
     {
-        public static string MyAuthorizationHeader = "myauthorization";
+        public static string MyAuthorizationHeader = "MyAuthorization";
         public const string DataNotFound = "Data not found!";
         public const string InvalidData = "Invalid data!";
         public const string InvalidCredentials = "Invalid credentials!";

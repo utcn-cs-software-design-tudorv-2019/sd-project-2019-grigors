@@ -102,6 +102,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BooksController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -111,6 +116,16 @@
       <DependentUpon>201905140830046_create database.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Business_Logic\BookService.cs" />
+    <Compile Include="Models\Business_Logic\CategoryService.cs" />
+    <Compile Include="Models\Business_Logic\CommentService.cs" />
+    <Compile Include="Models\Business_Logic\Interfaces\IBookService.cs" />
+    <Compile Include="Models\Business_Logic\Interfaces\ICategoryService.cs" />
+    <Compile Include="Models\Business_Logic\Interfaces\ICommentService.cs" />
+    <Compile Include="Models\Business_Logic\Interfaces\IMovieService.cs" />
+    <Compile Include="Models\Business_Logic\Interfaces\IUserService.cs" />
+    <Compile Include="Models\Business_Logic\MovieService.cs" />
+    <Compile Include="Models\Business_Logic\UserService.cs" />
     <Compile Include="Models\Data_Access\AppDbContext.cs" />
     <Compile Include="Models\Data_Access\Repository\BookRepository.cs" />
     <Compile Include="Models\Data_Access\Repository\CategoryRepository.cs" />
@@ -132,6 +147,9 @@
     <Compile Include="Utility\ChangePasswordModel.cs" />
     <Compile Include="Utility\Constants.cs" />
     <Compile Include="Utility\Encryptor.cs" />
+    <Compile Include="Utility\Interfaces\ISecurityService.cs" />
+    <Compile Include="Utility\LoginModel.cs" />
+    <Compile Include="Utility\SecurityService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -144,7 +162,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Business_Logic\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905140830046_create database.resx">

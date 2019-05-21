@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using TellYourFriends.Models.Data_Access.Repository.Interfaces;
+using TellYourFriends.Models.Entity;
 
 namespace TellYourFriends.Models.Data_Access.Repository
 {
@@ -17,6 +18,18 @@ namespace TellYourFriends.Models.Data_Access.Repository
 
         public Movie AddMovie(Movie movie)
         {
+            if (movie.Categories == null)
+            {
+                return null;
+            }
+            List<Category> categories = new List<Category>();
+            foreach (Category c in movie.Categories)
+            {
+                Category category = _context.Categories.FirstOrDefault(x => x.Id == c.Id);
+                categories.Add(category);
+            }
+            movie.Categories = categories;
+
             try
             {                
                 _context.Movies.Add(movie);
@@ -86,9 +99,9 @@ namespace TellYourFriends.Models.Data_Access.Repository
                     movieToUpdate.Image = movie.Image;
                 }
 
-                if (movie.Category != null)
+                if (movie.Categories != null)
                 {
-                    movieToUpdate.Category = movie.Category;
+                    movieToUpdate.Categories = movie.Categories;
                 }
 
                 if (movie.Comments != null)
@@ -107,11 +120,11 @@ namespace TellYourFriends.Models.Data_Access.Repository
             }
             }
 
-        public IQueryable<Movie> GetAllEventMovies()
+        public IQueryable<Movie> GetAllMovies()
         {
             try
             {
-                return _context.Movies.Include("Comments").Include("Category");
+                return _context.Movies.Include("Comments").Include("Categories");
             }
             catch (Exception ex)
             {
@@ -124,7 +137,7 @@ namespace TellYourFriends.Models.Data_Access.Repository
         {
             try
             {
-                return _context.Movies.Include("Category").Include("Comments").SingleOrDefault(u => u.Id == id);
+                return _context.Movies.Include("Categories").Include("Comments").SingleOrDefault(u => u.Id == id);
             }
             catch (Exception ex)
             {

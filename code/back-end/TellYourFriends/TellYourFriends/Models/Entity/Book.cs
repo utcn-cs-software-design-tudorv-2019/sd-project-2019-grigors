@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -23,7 +24,12 @@ namespace TellYourFriends.Models.Entity
 
         public double Rating { get; set; }
 
-        public List<Category> Category { get; set; }
+        [ForeignKey("User")]
+        public int UserId { get; set; }
+
+        public User User { get; set; }
+
+        public List<Category> Categories { get; set; }
 
         public List<Comment> Comments { get; set; }
     }

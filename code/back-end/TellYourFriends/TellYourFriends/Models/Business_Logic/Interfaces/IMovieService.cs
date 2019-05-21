@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TellYourFriends.Models.Data_Access.Repository.Interfaces
+namespace TellYourFriends.Models.Business_Logic.Interfaces
 {
-    public interface IMovieRepository
+    public interface IMovieService
     {
         IQueryable<Movie> GetAllMovies();
         Movie GetMovie(int id);
         Movie AddMovie(Movie movie);
         Movie EditMovie(Movie movie);
         bool DeleteMovie(int id);
-        
     }
 }

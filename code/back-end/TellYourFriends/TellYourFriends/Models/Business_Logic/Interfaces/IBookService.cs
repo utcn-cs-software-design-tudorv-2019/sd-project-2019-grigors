@@ -5,15 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using TellYourFriends.Models.Entity;
 
-namespace TellYourFriends.Models.Data_Access.Repository.Interfaces
+namespace TellYourFriends.Models.Business_Logic.Interfaces
 {
-    public interface IBookRepository
+    public interface IBookService
     {
         IQueryable<Book> GetAllBooks();
         Book GetBook(int id);
         Book AddBook(Book book);
         Book EditBook(Book book);
         bool DeleteBook(int id);
-
     }
 }

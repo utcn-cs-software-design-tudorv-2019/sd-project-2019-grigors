@@ -18,6 +18,20 @@ namespace TellYourFriends.Models.Data_Access.Repository
 
         public Book AddBook(Book book)
         {
+            if (book.Categories == null)
+            {
+                return null;
+            }
+            List<Category> categories = new List<Category>();
+            foreach (Category c in book.Categories)
+            {
+                Category category = _context.Categories.FirstOrDefault(x => x.Id == c.Id);
+                categories.Add(category);
+            }
+            book.Categories = categories;
+
+
+
             try
             {
                 _context.Books.Add(book);
@@ -77,9 +91,9 @@ namespace TellYourFriends.Models.Data_Access.Repository
                     bookToUpdate.Image = book.Image;
                 }
 
-                if (book.Category != null)
+                if (book.Categories != null)
                 {
-                    bookToUpdate.Category = book.Category;
+                    bookToUpdate.Categories = book.Categories;
                 }
 
                 if (book.Comments != null)
@@ -98,11 +112,11 @@ namespace TellYourFriends.Models.Data_Access.Repository
             }
         }
 
-        public IQueryable<Book> GetAllEventBooks()
+        public IQueryable<Book> GetAllBooks()
         {
             try
             {
-                return _context.Books.Include("Comments").Include("Category");
+                return _context.Books.Include("User").Include("Comments").Include("Categories");
             }
             catch (Exception ex)
             {
@@ -115,7 +129,7 @@ namespace TellYourFriends.Models.Data_Access.Repository
         {
             try
             {
-                return _context.Books.Include("Category").Include("Comments").SingleOrDefault(u => u.Id == id);
+                return _context.Books.Include("User").Include("Categories").Include("Comments").SingleOrDefault(u => u.Id == id);
             }
             catch (Exception ex)
             {
