@@ -115,6 +115,10 @@
     <Compile Include="Migrations\201905140830046_create database.Designer.cs">
       <DependentUpon>201905140830046_create database.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905211115213_UpdateDatabase.cs" />
+    <Compile Include="Migrations\201905211115213_UpdateDatabase.Designer.cs">
+      <DependentUpon>201905211115213_UpdateDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Business_Logic\BookService.cs" />
     <Compile Include="Models\Business_Logic\CategoryService.cs" />
@@ -166,6 +170,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905140830046_create database.resx">
       <DependentUpon>201905140830046_create database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211115213_UpdateDatabase.resx">
+      <DependentUpon>201905211115213_UpdateDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

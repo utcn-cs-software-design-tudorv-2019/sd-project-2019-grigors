@@ -43,6 +43,8 @@ namespace TellYourFriends.Controllers
             if (movie == null || !ModelState.IsValid)
                 return ResponseMessage(Request.CreateResponse(HttpStatusCode.BadRequest, Constants.InvalidData));
 
+            movie.UserId = SecurityService.Instance.GetUserByToken(SecurityService.Instance.GetTokenFromHeader(Request.Headers.GetValues(Constants.MyAuthorizationHeader))).Id;
+
             var addedMovie = _movieService.AddMovie(movie);
 
             if (addedMovie != null) return Ok(addedMovie);
@@ -55,8 +57,6 @@ namespace TellYourFriends.Controllers
         {
             if (movie == null || !ModelState.IsValid)
                 return ResponseMessage(Request.CreateResponse(HttpStatusCode.BadRequest, Constants.InvalidData));
-
-            movie.UserId = SecurityService.Instance.GetUserByToken(SecurityService.Instance.GetTokenFromHeader(Request.Headers.GetValues(Constants.MyAuthorizationHeader))).Id;
 
             var updatedMovie = _movieService.EditMovie(movie);
 

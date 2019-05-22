@@ -29,9 +29,7 @@ namespace TellYourFriends.Models.Data_Access.Repository
                 categories.Add(category);
             }
             book.Categories = categories;
-
-
-
+            
             try
             {
                 _context.Books.Add(book);
