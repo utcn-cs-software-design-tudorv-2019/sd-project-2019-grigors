@@ -64,5 +64,41 @@ namespace TellYourFriends.Controllers
 
             return ResponseMessage(Request.CreateResponse(HttpStatusCode.InternalServerError, Constants.ActionNotRegistered));
         }
+
+        [Route("api/movies/dashboard")]
+        public IHttpActionResult GetDashboardEvents()
+        {
+            if (!SecurityService.Instance.IsAuthorised(Request.Headers.GetValues(Constants.MyAuthorizationHeader)))
+            {
+                return Unauthorized();
+            }
+
+            var id = SecurityService.Instance.GetUserByToken(SecurityService.Instance.GetTokenFromHeader(Request.Headers.GetValues(Constants.MyAuthorizationHeader))).Id;
+
+            var events = _movieService.GetDashboardMovies(id);
+            if (events != null)
+            {
+                return Ok(events);
+            }
+            return ResponseMessage(Request.CreateResponse(HttpStatusCode.NotFound, Constants.DataNotFound));
+        }
+
+        [Route("api/movies/myMovies")]
+        public IHttpActionResult GetMyMovies()
+        {
+            if (!SecurityService.Instance.IsAuthorised(Request.Headers.GetValues(Constants.MyAuthorizationHeader)))
+            {
+                return Unauthorized();
+            }
+
+            var id = SecurityService.Instance.GetUserByToken(SecurityService.Instance.GetTokenFromHeader(Request.Headers.GetValues(Constants.MyAuthorizationHeader))).Id;
+
+            var events = _movieService.GetMyMovies(id);
+            if (events != null)
+            {
+                return Ok(events);
+            }
+            return ResponseMessage(Request.CreateResponse(HttpStatusCode.NotFound, Constants.DataNotFound));
+        }
     }
 }

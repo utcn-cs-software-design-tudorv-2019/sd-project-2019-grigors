@@ -1,0 +1,53 @@
+<router-outlet></router-outlet>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="form-container">
+  <form class="formStyle" [formGroup]="signUp" (submit)="onSubmit()">
+    <h2 class="form-title">{{title}}</h2>
+    <div class="form-fields">
+      <mat-form-field>
+        <input matInput placeholder="Name" formControlName="name">
+      </mat-form-field>
+      <mat-form-field >
+        <input matInput placeholder="Email" [formControl]="emailFormControl"
+               [errorStateMatcher]="matcher" required>
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <form [formGroup]="passwords" *ngIf="!update" class="form-fields">
+        <mat-form-field>
+          <input matInput type="password" placeholder="Password" formControlName="passwordF"
+                 [type]="hide ? 'password' : 'text'" required>
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error *ngIf="passwords.hasError('required')">Password is required</mat-error>
+        </mat-form-field>
+        <mat-form-field *ngIf="!update">
+          <input matInput type="password" placeholder="Confirm password" formControlName="passwordC"
+                 [errorStateMatcher]="matcher" [type]="hideConf ? 'password' : 'text'" required>
+          <mat-icon matSuffix (click)="hideConf = !hideConf">{{hideConf ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error *ngIf="passwords.hasError('required')">Please confirm your password</mat-error>
+          <mat-error *ngIf="passwords.hasError('notSame')">Passwords don't match</mat-error>
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="image-upload">
+      <i class="material-icons resize" *ngIf="!imgURL">
+        account_circle
+      </i>
+      <img [src]="imgURL" class="img-style" *ngIf="imgURL">
+      <button class="button" mat-raised-button color="primary" type="button" (click)="fileInput.click()">
+        Add Photo
+        <input #fileInput id="img-upload" type="file" #Image accept="image/*" (change)="preview($event.target.files)"/>
+      </button>
+    </div>
+    <div>
+      <button mat-raised-button class="button" color="primary" type="submit" [disabled]="!signUp.valid ">
+        {{buttonLabel}}
+      </button>
+      <button mat-raised-button class="button" color="primary" type="reset">Clear</button>
+    </div>
+  </form>
+</div>

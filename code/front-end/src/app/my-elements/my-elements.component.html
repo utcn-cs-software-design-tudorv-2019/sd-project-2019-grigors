@@ -1,0 +1,33 @@
+<div class="container">
+  <mat-tab-group class="container__tab" mat-align-tabs="center" class="style-tabs" [(selectedIndex)]="selectedTab">
+    <mat-tab label="My Books">
+      <div *ngIf="myBooks && myBooks.length == 0" class="books-not-found">
+        <div>No books found</div>
+      </div>
+        <div *ngIf="myBooks == null">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <div class="book-page" *ngIf="myBooks">
+          <div *ngFor="let book of myBooks">
+            <app-element [book]="book" [isOwned]="true">
+            </app-element>
+          </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="My Movies">
+      <div *ngIf="myMovies && myMovies.length == 0" class="books-not-found">
+        <div>No movies found</div>
+      </div>
+        <div *ngIf="myMovies == null">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <div class="book-page" *ngIf="myMovies">
+          <div *ngFor="let movie of myMovies">
+            <app-element [book]="movie" [isOwned]="false">
+            </app-element>
+          </div>
+        </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+

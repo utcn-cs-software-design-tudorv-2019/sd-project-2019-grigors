@@ -13,6 +13,7 @@ namespace TellYourFriends.Models.Data_Access.Repository.Interfaces
         Movie AddMovie(Movie movie);
         Movie EditMovie(Movie movie);
         bool DeleteMovie(int id);
-        
+        IQueryable<Movie> GetDashboardMovies(int id);
+        IQueryable<Movie> GetMyMovies(int id);
     }
 }

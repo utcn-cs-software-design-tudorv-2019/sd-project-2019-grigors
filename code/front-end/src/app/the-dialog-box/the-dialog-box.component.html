@@ -1,0 +1,11 @@
+<div class="dialog-details">
+  <img [src]="imageSrc" class="event-img"/>
+  <mat-dialog-content class="dialog-content">
+    <h2 class="title">{{data?.elementName}}</h2>
+    <h4 class="dialog-location-date">
+      <span><b>Author/Director:</b> {{data?.elementAuthor_Director}}</span>
+      <span><b>Description:</b> {{data?.elementDescription}}</span>
+      <span><b>Edition/Year:</b> {{data?.elementEdition_Year}}</span>
+    </h4>
+  </mat-dialog-content>
+</div>

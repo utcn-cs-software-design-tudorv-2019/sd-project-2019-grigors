@@ -64,5 +64,41 @@ namespace TellYourFriends.Controllers
 
             return ResponseMessage(Request.CreateResponse(HttpStatusCode.InternalServerError, Constants.ActionNotRegistered));
         }
+
+        [Route("api/books/dashboard")]
+        public IHttpActionResult GetDashboardEvents()
+        {
+            if (!SecurityService.Instance.IsAuthorised(Request.Headers.GetValues(Constants.MyAuthorizationHeader)))
+            {
+                return Unauthorized();
+            }
+
+            var id = SecurityService.Instance.GetUserByToken(SecurityService.Instance.GetTokenFromHeader(Request.Headers.GetValues(Constants.MyAuthorizationHeader))).Id;
+
+            var events = _bookService.GetDashboardBooks(id);
+            if (events != null)
+            {
+                return Ok(events);
+            }
+            return ResponseMessage(Request.CreateResponse(HttpStatusCode.NotFound, Constants.DataNotFound));
+        }
+
+        [Route("api/books/myBooks")]
+        public IHttpActionResult GetMyBooks()
+        {
+            if (!SecurityService.Instance.IsAuthorised(Request.Headers.GetValues(Constants.MyAuthorizationHeader)))
+            {
+                return Unauthorized();
+            }
+
+            var id = SecurityService.Instance.GetUserByToken(SecurityService.Instance.GetTokenFromHeader(Request.Headers.GetValues(Constants.MyAuthorizationHeader))).Id;
+
+            var events = _bookService.GetMyBooks(id);
+            if (events != null)
+            {
+                return Ok(events);
+            }
+            return ResponseMessage(Request.CreateResponse(HttpStatusCode.NotFound, Constants.DataNotFound));
+        }
     }
 }

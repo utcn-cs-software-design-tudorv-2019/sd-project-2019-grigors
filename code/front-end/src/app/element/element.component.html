@@ -1,0 +1,22 @@
+<mat-card class="card-class">
+  <div class="event-title">
+    <h2 *ngIf="book.name">{{book.name | uppercase}}</h2>
+  </div>
+  <img mat-card-image src="../../assets/element_default_.jpg" class="event-image">
+  <div class="rating-icon">
+    <mat-icon><i class="material-icons">grade</i></mat-icon>
+    <div *ngIf="book.rating">{{book.rating}}</div>
+  </div>
+  <mat-divider class="card-divider"></mat-divider>
+  <div class="edit-icon" *ngIf="isOwned">
+    <a routerLink="/books/update" (click)="newBookId()">
+      <mat-icon class="material-icons">edit</mat-icon>
+    </a>
+  </div>
+  <mat-card-actions>
+    <div class="details-btn">
+      <app-element-dialog-box [dialogBook]="book"></app-element-dialog-box>
+    </div>
+  </mat-card-actions>
+</mat-card>
+

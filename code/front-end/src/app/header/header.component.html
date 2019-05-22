@@ -1,0 +1,46 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<nav>
+  <mat-toolbar>
+    <img src="../../assets/logo.png" class="logo">
+    <div>
+      <a routerLink="{{homeurl}}" *ngIf="isLogged && !adminHeader">
+        <mat-icon><i class="material-icons">home</i></mat-icon>
+        Homepage</a>
+      <a routerLink="/admin" *ngIf="isLogged && adminHeader">
+        <mat-icon><i class="material-icons">home</i></mat-icon>
+        Admin panel</a>
+    </div>
+    <!--the following should show up only if the user is logged-->
+    <div>
+      <a routerLink="/my-elements" *ngIf="isLogged && !adminHeader">
+        <mat-icon><i class="material-icons">event</i></mat-icon>
+        My elements</a>
+    </div>
+    <div>
+      <a routerLink="/create-book" *ngIf="isLogged && !adminHeader">
+        <mat-icon><i class="material-icons">book</i></mat-icon>
+        Create book</a>
+    </div>
+    <div>
+      <a routerLink="/create-movie" *ngIf="isLogged && !adminHeader">
+        <mat-icon><i class="material-icons">movie</i></mat-icon>
+        Create movie</a>
+    </div>
+    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs class="icon-class" *ngIf="isLogged && !adminHeader">
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon><i class="material-icons menu-icon">menu</i></mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item><a routerLink="/account">Account</a></button>
+        <button mat-menu-item><a routerLink="/change-password">Change password</a></button>
+        <button mat-menu-item><a (click)="pressedLogOut()" routerLink="/login">Log out</a></button>
+      </mat-menu>
+    </div>
+    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs class="icon-class" *ngIf="!isLogged">
+      <a routerLink="/login">Login</a>
+    </div>
+    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs class="icon-class" *ngIf="isLogged && adminHeader">
+      <a (click)="pressedLogOut()" routerLink="/login">Log out</a>
+    </div>
+  </mat-toolbar>
+</nav>

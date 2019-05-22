@@ -1,0 +1,63 @@
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+}
+
+a:hover, a:active {
+  color: lightgray;
+}
+
+.navigation-items {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+mat-toolbar {
+  background-image: linear-gradient(135deg, rgb(17, 33, 122) 0%, rgb(63, 81, 181) 100%);
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 4px 3px rgba(0, 0, 0, .5);
+  z-index: 1000;
+}
+
+.mat-toolbar div:not(.icon-class) {
+  margin-right: 40px;
+}
+
+.icon-class {
+  padding-right: 30px;
+}
+
+i {
+  vertical-align: middle;
+}
+
+button {
+  color: white;
+  margin: auto 0;
+}
+
+button > a {
+  color: black;
+}
+
+.title {
+  color: white;
+  margin-right: 20px;
+}
+
+.menu-icon {
+  position: absolute;
+}
+
+.logo {
+  margin-right: 30px;
+  height: 60px;
+  width: 120px;
+}
+

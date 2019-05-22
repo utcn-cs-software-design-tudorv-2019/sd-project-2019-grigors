@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+.container_p {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+
+.style-tabs {
+  width: 100%;
+}
+
+.books-not-found {
+  color: #483d8b;
+  font-size: large;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.book-page{
+  display: flex;
+  flex-wrap: wrap;
+}

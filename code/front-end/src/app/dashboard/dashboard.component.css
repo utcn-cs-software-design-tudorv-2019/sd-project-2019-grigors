@@ -1,0 +1,44 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  color: #369;
+  font-size: 250%;
+}
+
+.book-page {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 100px;
+  padding: 0 40px;
+}
+
+.form-style-dashboard {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.form-fields-dashboard {
+  display: flex;
+  flex-flow: row;
+}
+
+.mat-form-field.mat-form-field {
+  margin-left: 20px;
+}
+
+.reset-button {
+  margin: 10px 0 20px 20px;
+  border-radius: 10px;
+}
+
+.books-not-found {
+  color: #483d8b;
+  font-size: 19px;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}

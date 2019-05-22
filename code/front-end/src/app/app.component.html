@@ -1,0 +1,7 @@
+<app-header></app-header>
+<mat-spinner class="spinner" *ngIf="!isReady"></mat-spinner>
+<main class="mainPage" *ngIf="isReady">
+  <router-outlet></router-outlet>
+</main>
+
+

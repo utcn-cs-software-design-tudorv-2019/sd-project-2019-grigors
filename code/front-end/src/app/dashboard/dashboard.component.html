@@ -1,0 +1,58 @@
+<div class="container">
+  <mat-tab-group class="container__tab" mat-align-tabs="center" class="style-tabs" [(selectedIndex)]="selectedTab">
+    <mat-tab label="Books">
+      <div *ngIf="books == null && movies == null">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+      <div *ngIf="books != null">
+        <div class="dashboard-container">
+          <form class="form-style-dashboard" [formGroup]="filterForm">
+            <div class="form-fields-dashboard">
+              <mat-form-field>
+                <input matInput placeholder="Filter elements by name" formControlName="name" (keyup)="filterBooks()"
+                       (keydown)="filterBooks()">
+              </mat-form-field>
+            </div>
+            <button class="reset-button" mat-flat-button color="primary" (click)="resetForm()">Reset filters</button>
+          </form>
+          <div class="book-page" *ngIf="books.length > 0">
+            <div *ngFor="let book of books">
+              <app-element [book]="book">
+              </app-element>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="books && books.length == 0" class="books-not-found">
+          <div>No books found</div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Movies">
+      <div *ngIf="movies == null">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+      <div *ngIf="movies != null">
+        <div class="dashboard-container">
+          <form class="form-style-dashboard" [formGroup]="filterForm">
+            <div class="form-fields-dashboard">
+              <mat-form-field>
+                <input matInput placeholder="Filter events by name" formControlName="name" (keyup)="filterMovies()"
+                       (keydown)="filterMovies()">
+              </mat-form-field>
+            </div>
+            <button class="reset-button" mat-flat-button color="primary" (click)="resetForm()">Reset filters</button>
+          </form>
+          <div class="book-page" *ngIf="movies.length > 0">
+            <div *ngFor="let book of movies">
+              <app-element [book]="book">
+              </app-element>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="movies && movies.length == 0" class="movies-not-found">
+          <div>No movies found</div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

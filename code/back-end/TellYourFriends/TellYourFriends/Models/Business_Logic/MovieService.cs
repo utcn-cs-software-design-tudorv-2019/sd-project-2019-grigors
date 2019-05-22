@@ -35,9 +35,19 @@ namespace TellYourFriends.Models.Business_Logic
             return _movieRepository.GetAllMovies();
         }
 
+        public IQueryable<Movie> GetDashboardMovies(int id)
+        {
+            return _movieRepository.GetDashboardMovies( id);
+        }
+
         public Movie GetMovie(int id)
         {
             return _movieRepository.GetMovie(id);
+        }
+
+        public IQueryable<Movie> GetMyMovies(int id)
+        {
+            return _movieRepository.GetMyMovies(id);
         }
     }
 }

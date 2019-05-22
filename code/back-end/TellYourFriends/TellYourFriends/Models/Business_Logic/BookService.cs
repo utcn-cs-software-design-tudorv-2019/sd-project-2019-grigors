@@ -40,5 +40,15 @@ namespace TellYourFriends.Models.Business_Logic
         {
             return _bookRepository.GetBook(id);
         }
+
+        public IQueryable<Book> GetDashboardBooks(int id)
+        {
+            return _bookRepository.GetDashboardBooks(id);
+        }
+
+        public IQueryable<Book> GetMyBooks(int id)
+        {
+            return _bookRepository.GetMyBooks(id);
+        }
     }
 }

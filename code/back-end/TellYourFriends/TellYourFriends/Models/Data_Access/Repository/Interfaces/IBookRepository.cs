@@ -14,6 +14,7 @@ namespace TellYourFriends.Models.Data_Access.Repository.Interfaces
         Book AddBook(Book book);
         Book EditBook(Book book);
         bool DeleteBook(int id);
-
+        IQueryable<Book> GetDashboardBooks(int id);
+        IQueryable<Book> GetMyBooks(int id);
     }
 }

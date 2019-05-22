@@ -1,0 +1,35 @@
+<div class="form-container">
+<form class="form-style" [formGroup]="createBookForm" (ngSubmit)="onSave()">
+  <h2 class="form-title">{{title}}</h2>
+  <mat-form-field>
+    <input placeholder="Name" matInput formControlName="name" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input placeholder="Author" matInput formControlName="author" required>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea placeholder="Description" matInput formControlName="description" required></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <input placeholder="Edition" matInput formControlName="edition" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input placeholder="Rating" type="number" matInput pattern="[0-5]" maxlength="1" formControlName="rating" required>
+  </mat-form-field>
+    <mat-select placeholder="Categories" [compareWith]="compareID" class="form-control" [(ngModel)]="checkedCategories" formControlName="category" multiple>
+      <mat-option *ngFor="let categories of categories" [value]="categories?.id"> {{categories?.name}}</mat-option>
+    </mat-select>
+  <div class="image-upload">
+    <i class="material-icons resize" *ngIf="!imgURL">
+      photo_size_select_actual
+    </i>
+    <img [src]="imgURL" class="img-style" *ngIf="imgURL">
+    <button class="button" mat-raised-button color="primary" type="button" (click)="fileInput.click()">
+      Add Photo
+      <input #fileInput id="img-upload" type="file" #Image accept="image/*" (change)="preview($event.target.files)"/>
+    </button>
+  </div>
+  <button class="form-buttons" mat-flat-button color="primary" [disabled]="!createBookForm.valid">{{buttonLabel}}</button>
+  <button class="form-buttons" mat-flat-button color="primary" type="reset"> Clear </button>
+</form>
+</div>

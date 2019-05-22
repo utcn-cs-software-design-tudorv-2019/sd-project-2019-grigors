@@ -135,5 +135,35 @@ namespace TellYourFriends.Models.Data_Access.Repository
                 return null;
             }
         }
+
+        public IQueryable<Book> GetDashboardBooks(int id)
+        {
+            try
+            {
+                List<Book> books = _context.Books.Include("Categories").Where(e => e.UserId != id).ToList<Book>();
+
+                return books.AsQueryable<Book>();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public IQueryable<Book> GetMyBooks(int id)
+        {
+            try
+            {
+                List<Book> books = _context.Books.Include("Categories").Where(e => e.UserId == id).ToList<Book>();
+
+                return books.AsQueryable<Book>();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
     }
 }

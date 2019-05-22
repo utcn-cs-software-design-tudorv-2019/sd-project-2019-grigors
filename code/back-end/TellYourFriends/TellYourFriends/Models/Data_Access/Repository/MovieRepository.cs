@@ -133,11 +133,41 @@ namespace TellYourFriends.Models.Data_Access.Repository
             }
         }
 
+        public IQueryable<Movie> GetDashboardMovies(int id)
+        {
+            try
+            {
+                List<Movie> movies = _context.Movies.Include("Categories").Where(e => e.UserId != id).ToList<Movie>();
+
+                return movies.AsQueryable<Movie>();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
         public Movie GetMovie(int id)
         {
             try
             {
                 return _context.Movies.Include("Categories").Include("Comments").SingleOrDefault(u => u.Id == id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public IQueryable<Movie> GetMyMovies(int id)
+        {
+            try
+            {
+                List<Movie> movies = _context.Movies.Include("Categories").Where(e => e.UserId == id).ToList<Movie>();
+
+                return movies.AsQueryable<Movie>();
             }
             catch (Exception ex)
             {

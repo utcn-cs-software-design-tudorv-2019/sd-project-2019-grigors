@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.html{
+  font-family: HelveticaNeueArabic,NeueHelveticaW01,Helvetica,HelveticaWorld,Arial,TazuganeGothic,sans-serif;
+}
+
+.snackBarSuccess {
+  background-color: #1a6600;
+  color: white;
+}
+
+.mat-simple-snackbar-action {
+  color: white !important;
+}
+
+.snackBarError {
+  background-color: red;
+  color: white;
+}
+
+.mat-tab-header {
+  border-bottom-style: none !important;
+}

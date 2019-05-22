@@ -14,5 +14,7 @@ namespace TellYourFriends.Models.Business_Logic.Interfaces
         Book AddBook(Book book);
         Book EditBook(Book book);
         bool DeleteBook(int id);
+        IQueryable<Book> GetDashboardBooks(int id);
+        IQueryable<Book> GetMyBooks(int id);
     }
 }
