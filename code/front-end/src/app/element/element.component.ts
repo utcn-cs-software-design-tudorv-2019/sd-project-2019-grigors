@@ -15,15 +15,18 @@ export class ElementComponent implements OnInit {
   @Input() movie: Movie;
   @Input() isOwned: boolean;
   bookId: number;
+  path_image: any;
 
-  constructor(private booksService: BooksService) { }
+  constructor(private booksService: BooksService) {
+  }
 
   ngOnInit() {
     this.booksService.currentBookId.subscribe(bookId => this.bookId = bookId);
+    this.path_image = this.book.image;
   }
 
   newBookId() {
     this.booksService.changeBookId(this.book.id);
   }
 
- }
+}

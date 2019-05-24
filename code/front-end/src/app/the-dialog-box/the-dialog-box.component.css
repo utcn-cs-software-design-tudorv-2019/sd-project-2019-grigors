@@ -32,3 +32,8 @@ p{
 .dialog-location-date span{
   margin-bottom:10px;
 }
+
+.form-buttons {
+  width: 45%;
+  margin: 20px 3px 30px;
+}

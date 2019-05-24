@@ -27,9 +27,8 @@ export class CreateMovieComponent implements OnInit {
   movie: Movie;
   imgURL: string;
   categories: Category[];
-  comments: Comment[];
   update = false;
-  title = 'Create movie';
+  title = 'Add movie';
   buttonLabel = 'Save';
   fileToUpload: File = null;
   checkedCategories: number[] = [];
@@ -49,9 +48,9 @@ export class CreateMovieComponent implements OnInit {
     }
     this.createMovieForm = this.formBuilder.group({
       name: [''],
-      director: [''],
+      author: [''],
       description: [''],
-      year: [''],
+      edition: [''],
       rating: [''],
       category: [''],
     });

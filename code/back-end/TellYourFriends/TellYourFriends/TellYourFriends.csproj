@@ -119,6 +119,14 @@
     <Compile Include="Migrations\201905211115213_UpdateDatabase.Designer.cs">
       <DependentUpon>201905211115213_UpdateDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905221747252_UpdateCommentTable.cs" />
+    <Compile Include="Migrations\201905221747252_UpdateCommentTable.Designer.cs">
+      <DependentUpon>201905221747252_UpdateCommentTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905241915536_update2CommentTable.cs" />
+    <Compile Include="Migrations\201905241915536_update2CommentTable.Designer.cs">
+      <DependentUpon>201905241915536_update2CommentTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Business_Logic\BookService.cs" />
     <Compile Include="Models\Business_Logic\CategoryService.cs" />
@@ -173,6 +181,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905211115213_UpdateDatabase.resx">
       <DependentUpon>201905211115213_UpdateDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905221747252_UpdateCommentTable.resx">
+      <DependentUpon>201905221747252_UpdateCommentTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905241915536_update2CommentTable.resx">
+      <DependentUpon>201905241915536_update2CommentTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

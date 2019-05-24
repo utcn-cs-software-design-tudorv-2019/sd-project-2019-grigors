@@ -140,7 +140,7 @@ namespace TellYourFriends.Models.Data_Access.Repository
         {
             try
             {
-                List<Book> books = _context.Books.Include("Categories").Where(e => e.UserId != id).ToList<Book>();
+                List<Book> books = _context.Books.Include("Categories").Include("Comments").Where(e => e.UserId != id).ToList<Book>();
 
                 return books.AsQueryable<Book>();
             }

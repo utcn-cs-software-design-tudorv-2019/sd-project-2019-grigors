@@ -11,6 +11,7 @@ import {
   MatProgressSpinnerModule, MatTableModule
 } from '@angular/material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatListModule} from '@angular/material/list';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
@@ -49,6 +50,7 @@ const ANGULAR_MATERIAL = [
   MatIconModule,
   MatCardModule,
   MatTabsModule,
+  MatListModule,
   MatDialogModule,
   MatDividerModule,
   MatSelectModule,

@@ -27,9 +27,8 @@ export class CreateBookComponent implements OnInit {
   book: Book;
   imgURL: string;
   categories: Category[];
-  comments: Comment[];
   update = false;
-  title = 'Create book';
+  title = 'Add book';
   buttonLabel = 'Save';
   fileToUpload: File = null;
   checkedCategories: number[] = [];

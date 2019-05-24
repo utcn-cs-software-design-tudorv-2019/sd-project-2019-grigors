@@ -7,5 +7,28 @@
       <span><b>Description:</b> {{data?.elementDescription}}</span>
       <span><b>Edition/Year:</b> {{data?.elementEdition_Year}}</span>
     </h4>
+    <div [formGroup]="createCommentForm" (ngSubmit)="onSave()">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Leave a comment</mat-card-title>
+        </mat-card-header>
+        <mat-form-field>
+          <input matInput placeholder="Title" formControlName="title" required>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="Body" formControlName="body" required></textarea>
+        </mat-form-field>
+        <button class="form-buttons" mat-flat-button color="primary" [disabled]="!createCommentForm.valid">Add Comment
+        </button>
+        <mat-list>
+          <mat-list-item *ngFor="let comment of data?.elementComments">
+              <h2 matLine> {{comment.Title}} </h2>
+              <p matLine> {{comment.Body}} </p>
+              <p matLine align="right"> {{comment.Date | date }} </p>
+            <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+          </mat-list-item>
+        </mat-list>
+      </mat-card>
+    </div>
   </mat-dialog-content>
 </div>

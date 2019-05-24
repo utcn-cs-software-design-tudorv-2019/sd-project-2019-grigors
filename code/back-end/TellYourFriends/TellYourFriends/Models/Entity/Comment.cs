@@ -18,5 +18,9 @@ namespace TellYourFriends.Models.Entity
         public DateTime Date { get; set; }
 
         public int Likes { get; set; }
+
+        public Book Book { get; set; }
+        
+        public Movie Movie { get; set; }
     }
 }

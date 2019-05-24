@@ -3,7 +3,6 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class TsConstants {
   static LOGGED_USER = 'loggedUserToken';
-  static DATE_FORMAT = 'dd MMM yyyy';
   static ADMIN_TOKEN_END  = '61387333';
   static URL = 'api/';
 

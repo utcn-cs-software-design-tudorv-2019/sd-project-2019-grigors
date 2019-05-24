@@ -5,6 +5,13 @@ import {Book} from '../models/book';
 import {BooksService} from '../services/books.service';
 import {TsConstants} from '../constants/tsConstants';
 import {Movie} from '../models/movie';
+import {Comment} from '../models/comment';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {EndpointsService} from '../services/shared/endpoints.service';
+import {CustomSnackbarService} from '../services/custom-snackbar.service';
+import {Router} from '@angular/router';
+import {ErrorHandlerService} from '../services/error-handler.service';
+import {element} from 'protractor';
 
 @Component({
   selector: 'app-element-dialog-box',
@@ -19,25 +26,12 @@ export class BookDialogBoxComponent {
   constructor(public dialog: MatDialog) {
   }
 
+
   async openDialog() {
     let author_director;
     let edition_year;
-
     author_director = this.dialogBook.author;
     edition_year = this.dialogBook.edition;
-
-    // if (this.dialogBook.author == null) {
-    //   author_director = this.dialogMovie.author;
-    // } else {
-    //   author_director = this.dialogBook.author;
-    // }
-    //
-    // if (this.dialogBook.edition == null) {
-    //   edition_year = this.dialogMovie.edition;
-    // } else {
-    //   edition_year = this.dialogBook.edition;
-    // }
-
     const dialogRef = this.dialog.open(TheDialogBoxComponent,
       {
         width: '460px',
@@ -49,6 +43,7 @@ export class BookDialogBoxComponent {
           elementEdition_Year: edition_year,
           elementId: this.dialogBook.id,
           elementImage: this.dialogBook.image,
+          elementComments: this.dialogBook.comments,
         }
       }
     );
