@@ -74,9 +74,9 @@ namespace TellYourFriends.Models.Data_Access.Repository
                     movieToUpdate.Description = movie.Description;
                 }
 
-                if(movie.Director!=null && movie.Director != "")
+                if(movie.Author!=null && movie.Author != "")
                 {
-                    movieToUpdate.Director = movie.Director;
+                    movieToUpdate.Author = movie.Author;
                 }
 
                 if (movie.Name != null && movie.Name != "")
@@ -84,9 +84,9 @@ namespace TellYourFriends.Models.Data_Access.Repository
                     movieToUpdate.Name = movie.Name;
                 }
 
-                if (movie.Year != 0)
+                if (movie.Edition != null)
                 {
-                    movieToUpdate.Year = movie.Year;
+                    movieToUpdate.Edition = movie.Edition;
                 }
 
                 if (movie.Rating != 0.0)

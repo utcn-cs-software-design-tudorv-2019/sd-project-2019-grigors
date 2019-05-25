@@ -1,4 +1,4 @@
-<div class="dialog-details">
+<div class="dialog-details" >
   <img [src]="imageSrc" class="event-img"/>
   <mat-dialog-content class="dialog-content">
     <h2 class="title">{{data?.elementName}}</h2>
@@ -18,7 +18,7 @@
         <mat-form-field class="example-full-width">
           <textarea matInput placeholder="Body" formControlName="body" required></textarea>
         </mat-form-field>
-        <button class="form-buttons" mat-flat-button color="primary" [disabled]="!createCommentForm.valid">Add Comment
+        <button class="form-buttons" mat-flat-button color="primary" (click)="onSave()" [disabled]="!createCommentForm.valid">Add Comment
         </button>
         <mat-list>
           <mat-list-item *ngFor="let comment of data?.elementComments">

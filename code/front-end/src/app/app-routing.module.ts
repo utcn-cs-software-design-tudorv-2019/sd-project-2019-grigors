@@ -6,7 +6,6 @@ import {AuthGuard} from './services/auth-guard.service';
 import {MyElementsComponent} from './my-elements/my-elements.component';
 import {CreateUserComponent} from './create-user/create-user.component';
 import {CreateBookComponent} from './create-book/create-book.component';
-import {TheDialogBoxComponent} from './the-dialog-box/the-dialog-box.component';
 import {ChangePasswordComponent} from './change-password/change-password.component';
 import {CreateMovieComponent} from './create-movie/create-movie.component';
 
@@ -15,8 +14,6 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LogInFormComponent },
   { path: 'register', component: CreateUserComponent },
-  { path: 'books/attend', component: TheDialogBoxComponent },
-  { path: 'create-book', component: CreateBookComponent, pathMatch: 'full' },
   { path: 'create-book', component: CreateBookComponent, pathMatch: 'full' },
   { path: 'create-movie', component: CreateMovieComponent, pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },

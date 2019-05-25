@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {EndpointsService} from '../services/shared/endpoints.service';
 import {Router} from '@angular/router';
@@ -10,6 +10,9 @@ import {CustomSnackbarService} from '../services/custom-snackbar.service';
 import {ViewEncapsulation} from '@angular/cli/lib/config/schema';
 import {Book} from '../models/book';
 import {BehaviorSubject} from 'rxjs';
+import {BooksService} from '../services/books.service';
+import {Movie} from '../models/movie';
+import {MoviesService} from '../services/movies.service';
 
 @Component({
   selector: 'app-the-dialog-box',
@@ -17,31 +20,27 @@ import {BehaviorSubject} from 'rxjs';
   styleUrls: ['./the-dialog-box.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class TheDialogBoxComponent {
+export class TheDialogBoxComponent implements OnInit {
 
   createCommentForm: FormGroup;
   comment: Comment;
   newCommentFinal: Comment;
 
   book: Book;
-  newBook: Book;
+  movie: Movie;
 
   imageSrc = '';
-
-  elementIdSource = new BehaviorSubject<number>(1);
-  currentElementId = this.elementIdSource.asObservable();
-  elementId: number;
 
   constructor(public dialogRef: MatDialogRef<TheDialogBoxComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private router: Router,
-              private generalService: EndpointsService,
               private errorHandler: ErrorHandlerService,
               private formBuilder: FormBuilder,
+              private booksService: BooksService,
+              private moviesService: MoviesService,
               private endPoints: EndpointsService,
               private snackBar: CustomSnackbarService,
   ) {
-
     if (this.data.elementImage != null) {
       this.imageSrc = this.data.elementImage;
     }
@@ -63,25 +62,45 @@ export class TheDialogBoxComponent {
   }
 
   async ngOnInit() {
-    this.currentElementId.subscribe(elementId => this.elementId = elementId);
-    this.book = await(new Book( this.endPoints.getById<Book> (this.elementId, TsConstants.APP_ENDPOINTS.BOOKS).toPromise()));
+    if (this.data.elementName.includes(TsConstants.BOOK_SUFFIX)) {
+      this.book = await this.booksService.getBookById(this.data.elementId, TsConstants.APP_ENDPOINTS.BOOKS);
+    } else {
+      if (this.data.elementName.includes(TsConstants.MOVIE_SUFFIX)) {
+        this.movie = await this.moviesService.getMovieById(this.data.elementId, TsConstants.APP_ENDPOINTS.MOVIES);
+      }
+    }
   }
 
   onSave() {
     this.newCommentFinal = this.createComment();
-    this.newBook.id = this.book.id;
-    this.newBook.comments.push(this.newCommentFinal);
-    this.endPoints.update<Book>(this.newBook, TsConstants.APP_ENDPOINTS.BOOKS).subscribe(
-      succes => {
-        this.snackBar.successSnackBar('Your comment has been added!');
-        setTimeout(() => {
-          this.router.navigate(['dashboard']);
-        }, 2000);
-      },
-      error => {
-        this.errorHandler.handleError(error);
-      }
-    );
+    if (this.data.elementName.includes(TsConstants.BOOK_SUFFIX)) {
+      this.newCommentFinal.book = this.book;
+      this.endPoints.post<Book>(this.newCommentFinal, TsConstants.APP_ENDPOINTS.COMMENTS).subscribe(
+        succes => {
+          this.snackBar.successSnackBar('Your comment has been added!');
+          setTimeout(() => {
+            this.router.navigate([TsConstants.ROUTES.DASHBOARD]);
+          }, 2000);
+        },
+        error => {
+          this.errorHandler.handleError(error);
+        }
+      );
+    }
+    if (this.data.elementName.includes(TsConstants.MOVIE_SUFFIX)) {
+      this.newCommentFinal.movie = this.movie;
+      this.endPoints.post<Movie>(this.newCommentFinal, TsConstants.APP_ENDPOINTS.COMMENTS).subscribe(
+        succes => {
+          this.snackBar.successSnackBar('Your comment has been added!');
+          setTimeout(() => {
+            this.router.navigate([TsConstants.ROUTES.DASHBOARD]);
+          }, 2000);
+        },
+        error => {
+          this.errorHandler.handleError(error);
+        }
+      );
+    }
   }
 
 }

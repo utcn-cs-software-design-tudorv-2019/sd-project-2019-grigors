@@ -135,7 +135,7 @@ export class CreateBookComponent implements OnInit {
   private createBook(): Book {
     const createBookValue = this.createBookForm.value;
     const newBook: Book = {
-      name: createBookValue.name,
+      name: createBookValue.name + TsConstants.BOOK_SUFFIX,
       author: createBookValue.author,
       description: createBookValue.description,
       edition: createBookValue.edition,
@@ -151,7 +151,7 @@ export class CreateBookComponent implements OnInit {
       success => {
         this.snackBar.successSnackBar('Your book has been updated!');
         setTimeout(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate([TsConstants.ROUTES.DASHBOARD]);
         }, 2000);
       },
       error => {
@@ -165,7 +165,7 @@ export class CreateBookComponent implements OnInit {
      succes => {
         this.snackBar.successSnackBar('Your book has been created!');
         setTimeout(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate([TsConstants.ROUTES.DASHBOARD]);
         }, 2000);
       },
       error => {

@@ -135,7 +135,7 @@ export class CreateMovieComponent implements OnInit {
   private createMovie(): Movie {
     const createMovieValue = this.createMovieForm.value;
     const newMovie: Movie = {
-      name: createMovieValue.name,
+      name: createMovieValue.name + TsConstants.MOVIE_SUFFIX,
       author: createMovieValue.author,
       description: createMovieValue.description,
       edition: createMovieValue.edition,

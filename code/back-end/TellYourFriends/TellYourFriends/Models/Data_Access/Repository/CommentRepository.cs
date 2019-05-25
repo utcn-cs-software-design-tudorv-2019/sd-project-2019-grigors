@@ -18,6 +18,17 @@ namespace TellYourFriends.Models.Data_Access.Repository
 
         public Comment AddComment(Comment comment)
         {
+            if (comment.Book != null)
+            {
+                var book = _context.Books.FirstOrDefault(x => x.Id == comment.Book.Id);
+                comment.Book = book;
+            }
+            if (comment.Movie != null)
+            {
+                var movie = _context.Movies.FirstOrDefault(x => x.Id == comment.Movie.Id);
+                comment.Movie = movie;
+            }
+
             try
             {
                 _context.Comments.Add(comment);

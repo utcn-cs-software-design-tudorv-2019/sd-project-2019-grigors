@@ -17,9 +17,9 @@ namespace TellYourFriends.Models
 
         public string Description { get; set; }
 
-        public int Year { get; set; }
+        public string Edition { get; set; }
 
-        public string Director { get; set; }
+        public string Author { get; set; }
 
         public string Image { get; set; }
 

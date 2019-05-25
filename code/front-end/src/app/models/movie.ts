@@ -7,7 +7,7 @@ export class Movie {
   userId?: number;
   name: string;
   description: string;
-  edition: number;
+  edition: string;
   author: string;
   image?: string;
   rating: number;
@@ -23,8 +23,8 @@ export class Movie {
       this.userId = item.UserId;
       this.name = item.Name;
       this.description = item.Description;
-      this.edition = item.Year;
-      this.author = item.Director;
+      this.edition = item.Edition;
+      this.author = item.Author;
       this.image = item.Image;
       this.rating = item.Rating;
       this.categories = item.Categories;

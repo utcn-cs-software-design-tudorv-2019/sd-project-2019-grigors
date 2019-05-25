@@ -26,6 +26,7 @@ export class EndpointsService {
   }
 
   public post<T>(input: any, endpoint: string): Observable<T> {
+    console.log(input);
     this.setRequestHeaders();
     return this.httpClient
       .post<T>(TsConstants.URL + endpoint, input, {headers: this.headers});
