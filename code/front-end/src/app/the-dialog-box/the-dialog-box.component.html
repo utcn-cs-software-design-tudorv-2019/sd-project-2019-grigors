@@ -18,8 +18,8 @@
         <mat-form-field class="example-full-width">
           <textarea matInput placeholder="Body" formControlName="body" required></textarea>
         </mat-form-field>
-        <button class="form-buttons_add" mat-flat-button color="primary" (click)="onSave()" [disabled]="!createCommentForm.valid">Add Comment
-        </button>
+        <br>
+        <button class="form-buttons_add" mat-flat-button color="primary" (click)="onSave()" [disabled]="!createCommentForm.valid">Comment</button>
         <mat-list>
           <mat-list-item *ngFor="let comment of data?.elementComments">
               <h2 matLine> {{comment.Title}} </h2>

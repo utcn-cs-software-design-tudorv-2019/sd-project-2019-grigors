@@ -74,8 +74,7 @@ const ANGULAR_MATERIAL = [
     TheDialogBoxComponent,
     MyElementsComponent,
     ChangePasswordComponent,
-    ConfirmDialogComponent,
-    CreateMovieComponent
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
