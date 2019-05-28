@@ -26,7 +26,7 @@ export class MoviesService {
 
   async getMovieById(id: number, endpoint: string): Promise<Movie> {
     let movie: Movie;
-    movie = new Movie(await this.endPoints.getById<any>(id, endpoint).toPromise());
+    movie = new Movie(await this.endPoints.getById<Movie>(id, endpoint).toPromise());
     return movie;
   }
 

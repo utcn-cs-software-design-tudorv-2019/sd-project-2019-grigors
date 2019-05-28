@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Movie} from '../models/movie';
-import {Comment} from '../models/comment';
 import {Category} from '../models/category';
 import {EndpointsService} from '../services/shared/endpoints.service';
 import {OurCookieService} from '../services/shared/our-cookie.service';
@@ -165,7 +164,7 @@ export class CreateMovieComponent implements OnInit {
       succes => {
         this.snackBar.successSnackBar('Your movie has been created!');
         setTimeout(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate([TsConstants.ROUTES.DASHBOARD]);
         }, 2000);
       },
       error => {

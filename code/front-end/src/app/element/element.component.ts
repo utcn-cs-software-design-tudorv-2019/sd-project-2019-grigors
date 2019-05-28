@@ -3,6 +3,7 @@ import {Book} from '../models/book';
 import {TsConstants} from '../constants/tsConstants';
 import {BooksService} from '../services/books.service';
 import {Movie} from '../models/movie';
+import {MoviesService} from '../services/movies.service';
 
 @Component({
   selector: 'app-element',
@@ -14,10 +15,11 @@ export class ElementComponent implements OnInit {
   @Input() book: Book;
   @Input() movie: Movie;
   @Input() isOwned: boolean;
+  @Input() isOwnedMovie: boolean;
   bookId: number;
   path_image: any;
 
-  constructor(private booksService: BooksService) {
+  constructor(private booksService: BooksService, private moviesService: MoviesService) {
   }
 
   ngOnInit() {
@@ -29,4 +31,7 @@ export class ElementComponent implements OnInit {
     this.booksService.changeBookId(this.book.id);
   }
 
+  newMovieId() {
+    this.moviesService.changeMovieId(this.book.id);
+  }
 }

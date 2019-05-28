@@ -13,6 +13,11 @@
       <mat-icon class="material-icons">edit</mat-icon>
     </a>
   </div>
+  <div class="edit-icon" *ngIf="isOwnedMovie">
+    <a routerLink="/movies/update" (click)="newMovieId()">
+      <mat-icon class="material-icons">edit</mat-icon>
+    </a>
+  </div>
   <mat-card-actions>
     <div class="details-btn">
       <app-element-dialog-box [dialogBook]="book"></app-element-dialog-box>

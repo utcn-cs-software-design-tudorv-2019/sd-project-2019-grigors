@@ -1,14 +1,13 @@
 import {Category} from './category';
 import {Comment} from './comment';
 import {User} from './user';
-
 export class Movie {
   id?: number;
   userId?: number;
   name: string;
+  author: string;
   description: string;
   edition: string;
-  author: string;
   image?: string;
   rating: number;
   user?: User;
@@ -22,13 +21,13 @@ export class Movie {
       this.id = item.Id;
       this.userId = item.UserId;
       this.name = item.Name;
+      this.author = item.Author;
       this.description = item.Description;
       this.edition = item.Edition;
-      this.author = item.Author;
       this.image = item.Image;
       this.rating = item.Rating;
-      this.categories = item.Categories;
       this.user = item.User;
+      this.categories = item.Categories;
       this.comments = item.Comments;
     }
   }

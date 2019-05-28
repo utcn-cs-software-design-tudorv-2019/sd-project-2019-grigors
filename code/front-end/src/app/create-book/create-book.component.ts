@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Book} from '../models/book';
-import {Comment} from '../models/comment';
 import {Category} from '../models/category';
 import {EndpointsService} from '../services/shared/endpoints.service';
 import {OurCookieService} from '../services/shared/our-cookie.service';

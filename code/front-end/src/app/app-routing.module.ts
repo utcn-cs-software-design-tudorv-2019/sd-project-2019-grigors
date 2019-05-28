@@ -10,22 +10,24 @@ import {ChangePasswordComponent} from './change-password/change-password.compone
 import {CreateMovieComponent} from './create-movie/create-movie.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LogInFormComponent },
-  { path: 'register', component: CreateUserComponent },
-  { path: 'create-book', component: CreateBookComponent, pathMatch: 'full' },
-  { path: 'create-movie', component: CreateMovieComponent, pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'my-elements', component: MyElementsComponent, canActivate: [AuthGuard] },
-  { path: 'account', component: CreateUserComponent, canActivate: [AuthGuard] },
-  { path: 'books/update', component: CreateBookComponent, canActivate: [AuthGuard] },
-  { path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard] },
+  {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  {path: 'login', component: LogInFormComponent},
+  {path: 'register', component: CreateUserComponent},
+  {path: 'create-book', component: CreateBookComponent, canActivate: [AuthGuard]},
+  {path: 'create-movie', component: CreateMovieComponent, canActivate: [AuthGuard]},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  {path: 'my-elements', component: MyElementsComponent, canActivate: [AuthGuard]},
+  {path: 'account', component: CreateUserComponent, canActivate: [AuthGuard]},
+  {path: 'books/update', component: CreateBookComponent, canActivate: [AuthGuard]},
+  {path: 'movies/update', component: CreateMovieComponent, canActivate: [AuthGuard]},
+  {path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]},
 ];
 
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

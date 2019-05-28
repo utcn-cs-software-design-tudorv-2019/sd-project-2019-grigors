@@ -79,6 +79,11 @@ namespace TellYourFriends.Models.Data_Access.Repository
                     bookToUpdate.Name = book.Name;
                 }
 
+                if (book.Edition != null && book.Edition != "")
+                {
+                    bookToUpdate.Edition = book.Edition;
+                }
+
                 if (book.Rating != 0.0)
                 {
                     bookToUpdate.Rating = book.Rating;

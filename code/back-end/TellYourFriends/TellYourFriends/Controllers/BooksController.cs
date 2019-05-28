@@ -55,7 +55,7 @@ namespace TellYourFriends.Controllers
         [HttpPut]
         public IHttpActionResult EditBook(Book book)
         {
-            if (book == null || !ModelState.IsValid)
+            if (book == null)
                 return ResponseMessage(Request.CreateResponse(HttpStatusCode.BadRequest, Constants.InvalidData));
 
             var updatedBook = _bookService.EditBook(book);

@@ -37,6 +37,7 @@ namespace TellYourFriends.Controllers
             return ResponseMessage(Request.CreateResponse(HttpStatusCode.NotFound, Constants.DataNotFound));
         }
 
+       
         [HttpPost]
         public IHttpActionResult CreateMovie(Movie movie)
         {
@@ -55,7 +56,7 @@ namespace TellYourFriends.Controllers
         [HttpPut]
         public IHttpActionResult EditMovie(Movie movie)
         {
-            if (movie == null || !ModelState.IsValid)
+            if (movie == null)
                 return ResponseMessage(Request.CreateResponse(HttpStatusCode.BadRequest, Constants.InvalidData));
 
             var updatedMovie = _movieService.EditMovie(movie);

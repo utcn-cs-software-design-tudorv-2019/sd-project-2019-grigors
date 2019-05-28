@@ -23,7 +23,7 @@
         </div>
         <div class="book-page" *ngIf="myMovies">
           <div *ngFor="let movie of myMovies">
-            <app-element [book]="movie" [isOwned]="false">
+            <app-element [book]="movie" [isOwnedMovie]="true">
             </app-element>
           </div>
         </div>

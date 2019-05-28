@@ -9,7 +9,6 @@ import {Comment} from '../models/comment';
 import {CustomSnackbarService} from '../services/custom-snackbar.service';
 import {ViewEncapsulation} from '@angular/cli/lib/config/schema';
 import {Book} from '../models/book';
-import {BehaviorSubject} from 'rxjs';
 import {BooksService} from '../services/books.service';
 import {Movie} from '../models/movie';
 import {MoviesService} from '../services/movies.service';

@@ -2,16 +2,11 @@ import {Component, Input} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {TheDialogBoxComponent} from '../the-dialog-box/the-dialog-box.component';
 import {Book} from '../models/book';
-import {BooksService} from '../services/books.service';
 import {TsConstants} from '../constants/tsConstants';
 import {Movie} from '../models/movie';
-import {Comment} from '../models/comment';
-import {FormBuilder, FormGroup} from '@angular/forms';
 import {EndpointsService} from '../services/shared/endpoints.service';
-import {CustomSnackbarService} from '../services/custom-snackbar.service';
-import {Router} from '@angular/router';
-import {ErrorHandlerService} from '../services/error-handler.service';
-import {element} from 'protractor';
+import {MoviesService} from '../services/movies.service';
+
 
 @Component({
   selector: 'app-element-dialog-box',
@@ -21,17 +16,24 @@ import {element} from 'protractor';
 
 export class BookDialogBoxComponent {
   @Input() dialogBook: Book;
-  @Input() dialogMovie: Movie;
+  movie: Movie;
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private endpointsService: MoviesService) {
   }
 
 
   async openDialog() {
     let author_director;
     let edition_year;
+    let comments;
     author_director = this.dialogBook.author;
     edition_year = this.dialogBook.edition;
+    if (this.dialogBook.name.includes(TsConstants.BOOK_SUFFIX)) {
+      comments = this.dialogBook.comments;
+    } else {
+      this.movie = await this.endpointsService.getMovieById(this.dialogBook.id, TsConstants.APP_ENDPOINTS.MOVIES);
+      comments = this.movie.comments;
+    }
     const dialogRef = this.dialog.open(TheDialogBoxComponent,
       {
         width: '460px',
@@ -43,7 +45,7 @@ export class BookDialogBoxComponent {
           elementEdition_Year: edition_year,
           elementId: this.dialogBook.id,
           elementImage: this.dialogBook.image,
-          elementComments: this.dialogBook.comments,
+          elementComments: comments,
         }
       }
     );
