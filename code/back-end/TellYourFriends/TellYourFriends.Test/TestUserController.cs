@@ -11,7 +11,7 @@ using TellYourFriends.Models.Business_Logic.Interfaces;
 namespace TellYourFriends.Test
 {
     [TestClass]
-    class TestUserController
+    public class TestUserController
     {
         private IQueryable<User> _listOfUsers;
         private Mock<IUserService> _mockRepository;

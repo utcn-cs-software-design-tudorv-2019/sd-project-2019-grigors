@@ -10,7 +10,7 @@ using TellYourFriends.Models.Business_Logic.Interfaces;
 namespace TellYourFriends.Test
 {
     [TestClass]
-    class TestMovieController
+    public class TestMovieController
     {
         private IQueryable<Movie> _listOfMovies;
         private Mock<IMovieService> _mockRepository;
@@ -88,7 +88,7 @@ namespace TellYourFriends.Test
                new Movie {Id = 19, Author = "Author1", Rating = 1, Name = "Test3", Description="some desc", Edition="5"},
                new Movie { Id = 4, Author = "Author2", Rating = 1, Name = "Test4", Description="some desc", Edition="5"},
                new Movie {Id = 74, Author = "Author3", Rating = 1, Name = "Test5", Description="some desc", Edition="5" },
-        };
+            };
 
             return movies.AsQueryable();
         }

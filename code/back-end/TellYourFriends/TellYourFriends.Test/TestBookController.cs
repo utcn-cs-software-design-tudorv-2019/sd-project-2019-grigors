@@ -1,10 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http.Results;
 using TellYourFriends.Controllers;
 using TellYourFriends.Models.Business_Logic.Interfaces;
@@ -13,7 +10,7 @@ using TellYourFriends.Models.Entity;
 namespace TellYourFriends.Test
 {
     [TestClass]
-    class TestBookController
+    public class TestBookController
     {
         private IQueryable<Book> _listOfBooks;
         private Mock<IBookService> _mockRepository;
