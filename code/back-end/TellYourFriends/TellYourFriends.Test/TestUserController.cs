@@ -1,10 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
+using Moq;
 using System.Web.Http.Results;
 using TellYourFriends.Controllers;
 using TellYourFriends.Models;
 using TellYourFriends.Models.Data_Access.Repository.Interfaces;
+using TellYourFriends.Models.Business_Logic.Interfaces;
 
 namespace TellYourFriends.Test
 {
@@ -12,14 +14,14 @@ namespace TellYourFriends.Test
     class TestUserController
     {
         private IQueryable<User> _listOfUsers;
-        private Mock<IUserRepository> _mockRepository;
+        private Mock<IUserService> _mockRepository;
         private UsersController _controller;
 
         [TestInitialize]
         public void SetupTest()
         {
             _listOfUsers = GetMockedUsers();
-            _mockRepository = new Mock<IUserRepository>();
+            _mockRepository = new Mock<IUserService>();
             _controller = new UsersController(_mockRepository.Object);
         }
 
@@ -84,9 +86,9 @@ namespace TellYourFriends.Test
         {
             var users = new List<User>
             {
-                new User { Id = 8, Email = "test@tss-yonder.com", Password = "test", Name = "Test" },
-                new User { Id = 13, Email = "ttt@tss-yonder.com", Password = "ttt", Name = "ttt" },
-                new User { Id = 14, Email = "echipa@tss-yonder.com", Password = "echipa", Name = "TEOO" },
+                new User { Id = 8, Email = "test@gmiil.com", Password = "test", Name = "Test" },
+                new User { Id = 13, Email = "ttt@gmail.com", Password = "ttt", Name = "ttt" },
+                new User { Id = 14, Email = "echipa@hotmail.com", Password = "echipa", Name = "TEOO" },
             };
 
             return users.AsQueryable();
